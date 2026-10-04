@@ -49,7 +49,7 @@ jobs:
         working-directory: src
         run: |
           gradle :app:testDebugUnitTest
-          gradle :app:assembleDebug
+          gradle :app:assembleRelease
 
       - name: Read version
         id: version
@@ -60,7 +60,7 @@ jobs:
           echo "tag=v$VERSION" >> "$GITHUB_OUTPUT"
 
       - name: Prepare APK
-        run: cp src/app/build/outputs/apk/debug/app-debug.apk one-screen-launcher.apk
+        run: cp src/app/build/outputs/apk/release/app-release.apk one-screen-launcher.apk
 
       - name: Publish release
         env:
